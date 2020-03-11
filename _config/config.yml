@@ -1,0 +1,6 @@
+---
+Name: user-consent
+---
+Form:
+  extensions:
+    - ConsentFormExtension

@@ -1,0 +1,21 @@
+{
+    "name": "mouseketeers/user-consent",
+    "description": "A SilverStripe module to handle user consents",
+    "type": "silverstripe-module",
+    "keywords": [
+        "silverstripe",
+        "consent",
+        "GDPR"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Henrik Olsen",
+            "email": "henrik@mouseketeers.dk"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^3.6"
+    },
+    "minimum-stability": "stable"
+}
