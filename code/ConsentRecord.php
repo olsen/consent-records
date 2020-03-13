@@ -1,6 +1,9 @@
 <?php
 
 class ConsentRecord extends DataObject {
+
+	private static $default_sort = "Created DESC";
+
 	private static $db = array(
 		'ConsentID' => 'Varchar(255)',
 		'ConsentStatement' => 'Text',
