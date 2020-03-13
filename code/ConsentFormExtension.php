@@ -30,9 +30,10 @@ class ConsentFormExtension extends Extension {
 			if(in_array($field->class, self::$ignoredFields)) {
 				continue;
 			}
+			$key = ($field->title) ? $field->title : $field->name;
 			$value = $field->dataValue();
 			if($value) {
-				$formData[] = $field->title . ': ' . $value;	
+				$formData[] = $key . ': ' . $value;	
 			}
 		}
 
