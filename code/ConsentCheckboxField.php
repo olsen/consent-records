@@ -11,7 +11,7 @@ class ConsentCheckboxField extends CheckboxField {
 		}
 		if($consentType) {
 			$this->setConsentType($consentType);
-		}
+		}		
 		parent::__construct($name, $title);
 	}
 	public function Type() {
@@ -24,17 +24,17 @@ class ConsentCheckboxField extends CheckboxField {
 	public function getConsentIDFieldName() {
 		return self::$consentIDFieldName;
 	}
-	public function Required() {
-		if($this->form && ($validator = $this->form->Validator)) {
-			$validator->addRequiredField($this->name);
-		}
-		return true;
-	}
 	public function getConsentType() {
 		return self::$consentType;
 	}
 	public function setConsentType($consentType) {
 		self::$consentType = $consentType;
 		return $this;
+	}
+	public function Required() {
+		if($this->form && ($validator = $this->form->Validator)) {
+			$validator->addRequiredField($this->name);
+		}
+		return true;
 	}
 }

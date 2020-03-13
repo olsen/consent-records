@@ -4,7 +4,9 @@ class ConsentFormExtension extends Extension {
 	private static $ignoredFields = array(
 		'ConsentCheckboxField',
 		'HiddenField',
-		'BackURL'
+		'BackURL',
+		'PasswordField',
+		'ConfirmedPasswordField'
 	);
 
 	public function afterCallActionHandler($request, $action) {
@@ -30,15 +32,15 @@ class ConsentFormExtension extends Extension {
 			}
 			$value = $field->dataValue();
 			if($value) {
-				$formData[] = $field->name . ': ' . $value;	
+				$formData[] = $field->title . ': ' . $value;	
 			}
 		}
 
 		foreach ($consentFields as $consentField) {
 			
 			$consentIDFieldName = $consentField->getConsentIDFieldName();
-			$consentType = $consentField->getConsentType();
 			$consentIDField = $fields->fieldByName($consentIDFieldName);
+			$consentType = $consentField->getConsentType();
 
 			$consentRecord = new ConsentRecord();
 			$consentRecord->ConsentID = $consentIDField->dataValue();
