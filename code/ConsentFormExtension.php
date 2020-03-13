@@ -24,7 +24,7 @@ class ConsentFormExtension extends Extension {
 		if(!$consentFields) return;
 
 		$formData = [];
-		$vars = $form->request->getVars();
+
 		
 		foreach($fields as $field) {
 			if(in_array($field->class, self::$ignoredFields)) {
@@ -46,7 +46,7 @@ class ConsentFormExtension extends Extension {
 			$consentRecord = new ConsentRecord();
 			$consentRecord->ConsentID = $consentIDField->dataValue();
 			$consentRecord->ConsentType = $consentType;
-			$consentRecord->URL = Director::absoluteURL($vars['url']);
+			$consentRecord->URL = $form->request->getHeader('Referer');
 			$consentRecord->ConsentStatement = $consentField->title;
 			$consentRecord->ConsentData = implode(', ', $formData);
 
