@@ -9,7 +9,6 @@ class EditableConsentCheckbox extends EditableFormField {
 	static $icon = 'user-consent/images/editableconsentcheckbox.png';
 
 	public function getFieldConfiguration() {
-		// $options = parent::getFieldConfiguration();
 
 		$fields = new FieldList();
 
@@ -25,13 +24,14 @@ class EditableConsentCheckbox extends EditableFormField {
 		return $fields;
 	}	
 	public function getFormField() {
-
+		
 		$consentID = $this->getSetting('ConsentID');
-
+		
 		$field = ConsentCheckboxField::create( $this->Name, $this->Title)
 			->setConsentIDFieldName($consentID)
 			->setConsentType('Contact Form');
-		$errorMessage = $this->getErrorMessage()->HTML();
+		
+		$errorMessage = ($this->getErrorMessage()) ? $this->getErrorMessage() : $field->getCustomValidationMessage();
 		$field->setAttribute('data-rule-required', 'true');
 		$field->setAttribute('data-msg-required', $errorMessage);
 		
@@ -45,5 +45,8 @@ class EditableConsentCheckbox extends EditableFormField {
 	}
 	public function getIcon() {
 		return  self::$icon;
-	}	
+	}
+	public function getErrorMessage() {
+		return $this->CustomErrorMessage;
+	}
 }

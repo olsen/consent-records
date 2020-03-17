@@ -24,7 +24,6 @@ class ConsentFormExtension extends Extension {
 		if(!$consentFields) return;
 
 		$formData = [];
-
 		
 		foreach($fields as $field) {
 			if(in_array($field->class, self::$ignoredFields)) {

@@ -11,7 +11,7 @@ class ConsentCheckboxField extends CheckboxField {
 		}
 		if($consentType) {
 			$this->setConsentType($consentType);
-		}		
+		}	
 		parent::__construct($name, $title);
 	}
 	public function Type() {
@@ -36,5 +36,8 @@ class ConsentCheckboxField extends CheckboxField {
 			$validator->addRequiredField($this->name);
 		}
 		return true;
+	}
+	public function getCustomValidationMessage() {
+		return ($this->customValidationMessage) ? $this->customValidationMessage : _t('ConsentCheckboxField.CONSENTERRORMESSAGE', 'Please give consent to handle your private data');
 	}
 }
